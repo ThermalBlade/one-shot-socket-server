@@ -15,21 +15,15 @@ server.listen(port, () => console.log(`Listening on port ${port}`))
 
 const io = socketIo(server)
 
-let interval;
-
 io.on('connection', (socket) => {
     console.log('New client connected')
-    if(interval){
-        clearInterval(interval);
-    }
-    interval = setInterval(() => getApiAndEmit(socket), 1000)
+
+    socket.on('new message', function (data){
+        console.log(data)
+        socket.emit('new message2', data)
+    })
+
     socket.on('disconnect', () => {
-        console.log('Client disconnected');
-        clearInterval(interval);
+        console.log('Client disconnected')
     })
 })
-
-const getApiAndEmit = socket => {
-    const responce = new Date()
-    socket.emit("FromAPI", responce)
-}
