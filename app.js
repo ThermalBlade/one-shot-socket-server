@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
 
     socket.on('new message', function (data){
         console.log(data)
-        socket.emit('new message2', data)
+        io.sockets.emit('new message2', data)
     })
 
     socket.on('disconnect', () => {
