@@ -7,7 +7,7 @@ const index = require("./routes/index")
 app.use(index)
 
 const server = http.createServer(app)
-const port = 3005
+const port = 8080
 server.listen(port, () => console.log(`Listening on port ${port}`))
 
 const io = socketIo(server)
