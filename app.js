@@ -51,6 +51,4 @@ io.of('/chat').on('connection', (socket) => {
         console.log('new message from ', data.username, data.msg)
         io.sockets.emit('new message2', data.username + '\n' +  data.msg)
     })
-
-    //socket.broadcast.emit('newMessage', data)
 })
